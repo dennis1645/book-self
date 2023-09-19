@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Chalange Coding SMKDEV By Dennis</title>
+  </head>
+  <body>
+    <form action="">
+      <textarea name="" id="inputText" cols="30" rows="10"></textarea>
+      <button type="submit" onclick="splitTextToArray(event)">Convert</button>
+    </form>
+    <script>
+      function splitTextToArray(event) {
+        // Agar tidak refesh
+        event.preventDefault();
+
+        // Mengambil nilai input dari textarea berdasarkan ID
+        let inputText = document.getElementById("inputText").value;
+
+        // Pecah nilai input menjadi array, menggunakan spasi sebagai pemisah
+        let inputArray = inputText.split("\n");
+
+        let [word1, word2, word3, word4, word5] = inputArray;
+
+        let camel = [];
+
+        for (let i = 1; i <= 5; i++) {
+          let wordke = eval("word" + i);
+          let wordkeArr = wordke.toLowerCase().split("_");
+          let words =
+            wordkeArr[0] +
+            wordkeArr
+              .slice(1)
+              .map((word) =>
+                word.replace(/\b\w/g, (char) => char.toUpperCase())
+              )
+              .join("");
+
+          camel.push(words);
+        }
+
+        for (let j = 0; j <= camel.length - 1; j++) {
+          console.log(camel[j]);
+        }
+      }
+    </script>
+  </body>
+</html>
